@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block body %}
+{% if tiempo %}
+<p class="large"> ¡¿{{ tiempo }}?!</p>
+{% endif %}
+<p class="remark"> {{ mensaje }}</p>
+{% if puerto and linabr and update %}
+<p class="details">Puerto: {{ puerto }} Lineas abiertas: {{ linabr }}
+Ultimo reporte: {{ update }}</p>
+{% else %}
+<p class="details">Intente de nuevo mas tarde</p>
+{% endif %}
+{% endblock %}

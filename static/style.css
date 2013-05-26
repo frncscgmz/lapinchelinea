@@ -1,0 +1,43 @@
+h1 {
+   text-align: center;
+   margin-top: 2.5em;
+}
+.large {
+   font-size: 50pt;
+   margin: 0.5em;
+   text-align: center;
+}
+.remark {
+   margin: 0;
+   text-align: center;
+   font-size: 50pt;
+}
+.details {
+   font-style: italic;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+.inputs {
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 10px;
+   width: 50%;
+}
+.actions {
+   margin-top: 5px;
+}
+.footer {
+   bottom: 0;
+   text-align: left;
+   width: 100%;
+   font-size: 10pt;
+}
+.page {
+   min-height: 100%;
+}
+html, body {
+   height: 100%;
+   margin: 0;
+}
