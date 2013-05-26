@@ -30,7 +30,7 @@ h1 {
 }
 .footer {
    bottom: 0;
-   text-align: center;
+   text-align: left;
    width: 100%;
    font-size: 10pt;
 }
