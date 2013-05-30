@@ -58,26 +58,27 @@ def buscarPuerto(puerto,tipolinea,portlist):
    for port in portlist:
       if port.findtext("port_name") == puerto and \
       port.findtext("port_status") == 'Open': 
-         print 'Entro'
          if port.find(tipolinea)\
          .find("standard_lanes")\
          .findtext("operational_status")\
          == 'Update Pending':
             return tuple()
+         if port.find(tipolinea)\
+         .find("standard_lanes")\
+         .findtext("operational_status")\
+         == 'Lanes Closed':
+            return tuple()
+
          tiempo = port.find(tipolinea)\
          .find("standard_lanes")\
          .findtext("delay_minutes")
-         print tiempo
          linabr = port.find(tipolinea)\
          .find("standard_lanes")\
          .findtext("lanes_open")
-         print linabr
          update = port.find(tipolinea)\
          .find("standard_lanes")\
          .findtext("update_time")
-         print update
          mins = getMin(tiempo)
-         print mins
          if mins <= 20:
             mensaje="NO HAY NADA DE PINCHE LINEA"
          elif mins > 20 and mins <= 60:
@@ -96,8 +97,6 @@ def buscarPuerto(puerto,tipolinea,portlist):
          found = True
          break
    if not found:
-      #mensaje = "NO ENCONTRE NI MADRES"
-      #return mensaje
       return tuple()
    return tiempo,linabr,update,mensaje,mins
 
