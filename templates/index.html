@@ -12,10 +12,16 @@
                <option value="San Ysidro">San Ysidro</option>
                <option value="Tecate">Tecate</option>
                <option value="Otay Mesa">Otay Mesa</option>
-               <option value="Andrade">Andrade</option>
                <option value="Calexico">Calexico</option>
+               <option value="San Luis">San Luis</option>
+               <option value="Nogales">Nogales</option>
+               <option value="El Paso">El Paso</option>
+               <option value="Laredo">Laredo</option>
             </select>
-            <div><input name=tipolinea type=checkbox /> Ando a pie pinche desconsiderado</div>
+            <div>
+               <input name=tipolinea type=checkbox 
+               {% if checked %}checked="checked"{% endif %}/> Ando a pie pinche desconsiderado
+            </div>
             <div class=actions><input type=submit value="Buscar"></div>
          </form>
       </div>

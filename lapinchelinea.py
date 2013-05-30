@@ -17,11 +17,13 @@ def show_index():
 
 @app.route('/puerto/',methods=['POST'])
 def search_port():
+   checked = False
    if request.form['puertos']:
       puerto = request.form['puertos']
    tipolinea='passenger_vehicle_lanes'
    if 'tipolinea' in request.form:
       tipolinea='pedestrian_lanes'
+      checked = True
    try:
       req = urllib2.urlopen("http://apps.cbp.gov/bwt/bwt.xml")
       tree = ET.parse(req)
@@ -29,7 +31,7 @@ def search_port():
       import traceback
       print('Error: '+traceback.format_exc())
       return render_template('resultado.html',\
-            mensaje="NO ENCONTRE NI MADRES")
+            mensaje="NO ENCONTRE NI MADRES",checked=checked)
 
    portlist = tree.findall("port")
    if portlist != None:
@@ -39,10 +41,10 @@ def search_port():
          return render_template('resultado.html',\
                puerto=puerto,tiempo=pinf[0],\
                linabr=pinf[1],mensaje=pinf[3],\
-               mins=pinf[4],update=pinf[2])
+               mins=pinf[4],update=pinf[2],checked=checked)
       else:
          return render_template('resultado.html',\
-            mensaje="NO ENCONTRE NI MADRES")
+            mensaje="NO ENCONTRE NI MADRES",checked=checked)
          
 def getMin(s):
    l = s.split(' ')
