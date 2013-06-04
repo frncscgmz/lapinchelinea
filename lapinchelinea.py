@@ -70,6 +70,11 @@ def buscarPuerto(puerto,tipolinea,portlist):
          .findtext("operational_status")\
          == 'Lanes Closed':
             return tuple()
+         if port.find(tipolinea)\
+         .find("standard_lanes")\
+         .findtext("operational_status")\
+         == 'N/A':
+            return tuple()
 
          tiempo = port.find(tipolinea)\
          .find("standard_lanes")\
