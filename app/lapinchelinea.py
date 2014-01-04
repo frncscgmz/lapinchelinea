@@ -1,18 +1,12 @@
 from __future__ import with_statement
-from flask import Flask, request, session, g, redirect, url_for, abort, \
+from flask import request, session, g, redirect, url_for, abort, \
       render_template, flash, _app_ctx_stack
 import urllib2
 import xml.etree.ElementTree as ET
-
-# configuration
-DEBUG = True
-
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.config.from_envvar('LINEA_SETTINGS', silent=True)
+from app import app
 
 @app.route('/')
-def show_index():
+def index():
    return render_template('index.html')
 
 @app.route('/puerto/',methods=['POST'])
@@ -106,6 +100,3 @@ def buscarPuerto(puerto,tipolinea,portlist):
    if not found:
       return tuple()
    return tiempo,linabr,update,mensaje,mins
-
-if __name__=='__main__':
-   app.run()
