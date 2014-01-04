@@ -9,7 +9,7 @@ from app import app
 def index():
    return render_template('index.html')
 
-@app.route('/puerto/',methods=['POST'])
+@app.route('/puerto',methods=['POST'])
 def search_port():
    checked = False
    if request.form['puertos']:
@@ -19,7 +19,7 @@ def search_port():
       tipolinea='pedestrian_lanes'
       checked = True
    try:
-      req = urllib2.urlopen("http://apps.cbp.gov/bwt/bwt.xml")
+      req = urllib2.urlopen(app.config['SERVICE_URL'])
       tree = ET.parse(req)
    except Exception:
       import traceback
