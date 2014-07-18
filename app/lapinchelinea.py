@@ -33,7 +33,7 @@ def search_port():
 
       if len(pinf) > 0:
          return render_template('resultado.html',\
-               puerto=puerto,tiempo=pinf[0],\
+               puerto=puerto,tiempo=pinf[0]+' min',\
                linabr=pinf[1],mensaje=pinf[3],\
                mins=pinf[4],update=pinf[2],checked=checked)
       else:
