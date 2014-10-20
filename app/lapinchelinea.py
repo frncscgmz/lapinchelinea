@@ -1,8 +1,8 @@
 from __future__ import with_statement
 from flask import request, session, g, redirect, url_for, abort, \
       render_template, flash, _app_ctx_stack
-import urllib2
 import xml.etree.ElementTree as ET
+import requests
 from app import app
 
 @app.route('/')
@@ -19,8 +19,8 @@ def search_port():
       tipolinea='pedestrian_lanes'
       checked = True
    try:
-      req = urllib2.urlopen(app.config['SERVICE_URL'])
-      tree = ET.parse(req)
+      req  = requests.get(app.config['SERVICE_URL'])
+      tree = ET.fromstring(req.content)
    except Exception:
       import traceback
       print('Error: '+traceback.format_exc())
